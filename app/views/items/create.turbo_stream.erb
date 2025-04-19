@@ -1,0 +1,9 @@
+<%= turbo_stream.append "items" do %>
+  <%= render partial: "items/item", locals: { item: @item } %>
+<% end %>
+
+<%= turbo_stream.replace "new_item" do %>
+  <%= render partial: "items/form", locals: { todo_list: @todo_list, item: Item.new } %>
+<% end %>
+
+<%= render_turbo_stream_flash_messages %>

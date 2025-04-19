@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_04_162028) do
-  create_table "todo_lists", force: :cascade do |t|
-    t.string "name", null: false
+ActiveRecord::Schema[7.0].define(version: 2025_04_11_203300) do
+  create_table "items", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.boolean "completed", default: false
+    t.integer "todo_list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["todo_list_id"], name: "index_items_on_todo_list_id"
   end
 
+  create_table "todo_lists", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "items", "todo_lists"
 end

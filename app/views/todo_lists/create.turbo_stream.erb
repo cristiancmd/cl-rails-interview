@@ -1,0 +1,3 @@
+<%= turbo_stream.replace "new_todo_list", partial: "todo_lists/form", locals: { todo_list: TodoList.new } %>
+<%= turbo_stream.prepend "todo_lists", partial: "todo_lists/todo_list", locals: { todo_list: @todo_list } %>
+<%= render_turbo_stream_flash_messages %>

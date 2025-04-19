@@ -6,11 +6,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+    
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
     <%= yield %>
+    <%= turbo_frame_tag "flash" do %>
+      <%= render "shared/flash" %>
+    <% end %>
+    
   </body>
 </html>

@@ -1,9 +1,11 @@
-<%= link_to 'Add Todo List', new_todo_list_path %>
+<h1>Listas de Tareas</h1>
 
-<div>
+<%= turbo_frame_tag "new_todo_list" do %>
+  <%= render "todo_lists/form", todo_list: @todo_list %>
+<% end %>
+
+<ul id="todo_lists">
   <% @todo_lists.each do |todo_list| %>
-    <div>
-      #<%= todo_list.id %> | <%= todo_list.name %>
-    </div>
+    <%= render "todo_lists/todo_list", todo_list: todo_list %>
   <% end %>
-</div>
+</ul>
