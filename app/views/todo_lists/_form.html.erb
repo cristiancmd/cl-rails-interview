@@ -1,0 +1,10 @@
+<%= form_with model: todo_list, data: { turbo_frame: "new_todo_list" } do |f| %>
+  <div class="list-group-item no-border">
+    <div>
+      <%= f.text_field :name, placeholder: "Nombre de la lista", class: "todo-input", required: true %>
+    </div>
+    <div>
+      <%= f.submit(todo_list.new_record? ? "Agregar" : "Guardar") %>
+    </div>
+  </div>
+<% end %>

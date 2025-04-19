@@ -1,0 +1,12 @@
+<turbo-frame id="new_item">
+  <%= form_with(model: [todo_list, item], local: false) do |form| %>
+    <div class="list-group-item no-border">
+      <div>
+        <%= form.text_field :title, placeholder: "Nuevo item", required: true %>
+      </div>
+      <div>
+        <%= form.submit "Agregar" %>
+      </div>
+    </div>
+  <% end %>
+</turbo-frame>

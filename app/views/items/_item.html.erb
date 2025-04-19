@@ -1,0 +1,23 @@
+<%= turbo_stream_from item %>
+<%= turbo_frame_tag dom_id(item) do %>
+  <li>
+    <div class="list-group-item">
+      <div>
+        <%= check_box_tag "completed", "1", item.completed,
+        data: {
+          controller: "item",
+          action: "change->item#toggle",
+          url: toggle_todo_list_item_path(item.todo_list, item)
+        } %>
+        <%= item.title %>
+      </div>
+      <div>
+        <%= button_to todo_list_item_path(item.todo_list, item), 
+        method: :delete, 
+        class: "btn-with-icon" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </li>
+<% end %>

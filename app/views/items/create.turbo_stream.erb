@@ -1,0 +1,7 @@
+<% if @item.persisted? %>
+  <%= turbo_stream.append "items", partial: "items/item", locals: { item: @item } %>
+  <%= turbo_stream.replace "new_item", partial: "items/form", locals: { todo_list: @todo_list, item: Item.new } %>
+<% else %>
+  <%= turbo_stream.replace "new_item", partial: "items/form", locals: { todo_list: @todo_list, item: @item } %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

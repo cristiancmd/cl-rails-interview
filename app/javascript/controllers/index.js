@@ -9,3 +9,9 @@ eagerLoadControllersFrom("controllers", application)
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
+
+import ItemController from "./item_controller"
+application.register("item", ItemController)
+
+import FlashMessageController from "./flash_message_controller"
+application.register("flash-message", FlashMessageController)

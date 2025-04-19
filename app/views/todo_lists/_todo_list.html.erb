@@ -1,0 +1,18 @@
+<li id="<%= dom_id(todo_list) %>">
+  <div class="list-group-item">
+    <div>
+      <%= link_to todo_list.name, todo_list_path(todo_list) %>
+      <% if todo_list.items.any? %>
+        (<%= todo_list.items.where(completed: true).count %> / <%= todo_list.items.count %> )
+      <% end %>
+    </div>
+    <div>
+      <%= button_to todo_list_path(todo_list), 
+          method: :delete, 
+          data: { turbo_confirm: todo_list.items.count > 0 ? "Se eliminaran #{todo_list.items.count} items dentro de la lista" : nil }, 
+          class: "btn delete-btn" do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </div>
+  </div>
+</li>

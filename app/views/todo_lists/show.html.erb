@@ -1,0 +1,25 @@
+<div class="todo-list">
+  <div class="container">
+    <h1><%= @todo_list.name %></h1>
+    <%= link_to "← Volver", todo_lists_path, class: "back-link" %>
+  </div>
+  <hr>
+</div>
+<%= render partial: "items/form", locals: { todo_list: @todo_list, item: @item } %>
+<turbo-frame id="<%= dom_id(@todo_list) %>" class="todo-list">
+  <div>
+    <ul id="items">
+      <li id="todo_lists">
+        <%= check_box_tag "toggle_all", "1", false,
+          data: {
+            controller: "item",
+            action: "change->item#toggleAll",
+            url: complete_all_todo_list_path(@todo_list),
+          }
+        %>
+        Marcar todas las tareas
+      </li>
+      <%= render partial: "items/item", collection: @todo_list.items %>
+    </ul>
+  </div>
+</turbo-frame>
